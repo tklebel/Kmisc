@@ -2,9 +2,9 @@
 #'
 #' This function computes a mean-index or a sum-index for use in social sciences
 #' @param items The items you want to compute the index from. Has to be a data.frame.
-#' type mean will give you a mean-index, sum a sum-index
-#' maximum the maximum of allowed missings in a row
-#' minimum the minimum of non-missings in a row for which to compute the scale
+#' @param type mean will give you a mean-index, sum a sum-index
+#' @param maximum the maximum of allowed missings in a row
+#' @param minimum the minimum of non-missings in a row for which to compute the scale
 #' @keywords mean-index
 #' @export
 #' @examples
