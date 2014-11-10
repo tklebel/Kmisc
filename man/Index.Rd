@@ -4,7 +4,7 @@
 \alias{Index}
 \title{Index}
 \usage{
-Index(items, type = c("mean", "sum"), maximum, minimum)
+Index(items, type, max, min)
 }
 \arguments{
 \item{items}{The items you want to compute the index from. Has to be a data.frame.}
@@ -19,7 +19,20 @@ Index(items, type = c("mean", "sum"), maximum, minimum)
 This function computes a mean-index or a sum-index for use in social sciences
 }
 \examples{
-examples to insert
+# generate data
+set.seed(1234)
+item1 <- rnorm(10, 2.5, .5)
+item1[sample.int(length(item1), 2)] <- NA_real_
+item2 <- rnorm(10, 3, .5)
+item2[sample.int(length(item2), 3)] <- NA_real_
+item3 <- rnorm(10, 2.2, .5)
+item4 <- rnorm(10, 2, .5)
+df1 <- data.frame(item1, item2, item3, item4)
+df1
+# compute different Indizes
+Index(df1, type="mean", min=3)
+Index(df1, type="mean", min=2)
+Index(df1, type="sum", max=0)
 }
 \keyword{mean-index}
 
