@@ -7,10 +7,13 @@
 Index(items, type = c("mean", "sum"), maximum, minimum)
 }
 \arguments{
-\item{items}{The items you want to compute the index from. Has to be a data.frame.
-type mean will give you a mean-index, sum a sum-index
-maximum the maximum of allowed missings in a row
-minimum the minimum of non-missings in a row for which to compute the scale}
+\item{items}{The items you want to compute the index from. Has to be a data.frame.}
+
+\item{type}{mean will give you a mean-index, sum a sum-index}
+
+\item{maximum}{the maximum of allowed missings in a row}
+
+\item{minimum}{the minimum of non-missings in a row for which to compute the scale}
 }
 \description{
 This function computes a mean-index or a sum-index for use in social sciences
