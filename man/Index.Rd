@@ -32,7 +32,7 @@ df1
 # compute different Indizes
 Index(df1, type="mean", min=3)
 Index(df1, type="mean", min=2)
-Index(df1, type="sum", max=0)
+Index(df1, type="sum")
 }
 \keyword{mean-index}
 

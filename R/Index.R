@@ -21,7 +21,7 @@
 #' # compute different Indizes
 #' Index(df1, type="mean", min=3)
 #' Index(df1, type="mean", min=2)
-#' Index(df1, type="sum", max=0)
+#' Index(df1, type="sum")
  
 
 
@@ -30,7 +30,7 @@ Index <- function(items, type, max, min) {
     stop("Data must be a data frame")
   if(missing(max) && missing(min)) {
     m <- 0
-    print("minimum value of items was set to 0")
+    message("Missing value 'max' or 'min': maximum value of allowed NAs was set to 0")
   }
   else if(missing(max)){
     m <- dim(items)[2]-min
