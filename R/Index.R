@@ -50,7 +50,7 @@ Index <- function(items, type, max, min) {
            skala <- rowMeans(df, na.rm=T) # compute the meanIndex
          },
          sum = {
-           skala <- rowSums(df) # compute the meanIndex
+           skala <- rowSums(df) # compute the sumIndex
          })
   return(skala)
 }
