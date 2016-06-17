@@ -21,10 +21,17 @@ find_label <- function(.data, .var) {
 #'    \code{variable.labels} as columns.
 #' @export
 label_df <- function(.data) {
-  .data %>%
+  labels <- .data %>%
     attributes() %>%
-    .[c("names", "variable.labels")] %>%
-    dplyr::bind_cols()
+    .[c("names", "variable.labels")]
+  
+  if (length(labels$names) < length(labels$variable.labels)) {
+    out <- lapply(labels, "[", c(1:length(labels$names)))
+    message("Number of variables and variable.labels not identical. Truncating
+            variable.labels to length of variables.")
+  }
+  
+  dplyr::bind_cols(out)
 }
 
 
@@ -39,10 +46,17 @@ label_df <- function(.data) {
 #' @keywords internal
 #' @noRd
 reshape_data <- function(.data) {
-  .data %>%
+  missing <- .data %>% 
+    dplyr::summarise_all(funs(round(mean(is.na(.)), 2))) %>% 
+    tidyr::gather(var, wert) %>% 
+    split(.$var)
+  
+  data <- .data %>%
     tidyr::gather(var, wert) %>%
     dplyr::filter(!is.na(wert)) %>%
     split(.$var)
+  
+  list(.data = data, missing = missing)
 }
 
 #' Pipe operator

@@ -8,12 +8,13 @@
 #'
 #' @return Plots as side effect.
 #' @export
-plot_numerics <- function(.data, .labels = NULL) {
+plot_numerics <- function(.data, .labels = NULL, missingness = T) {
   reshaped <- .data %>%
     dplyr::select_if(is.numeric) %>%
     reshape_data()
-  
-  purrr::map(reshaped, plot_hist, .labels = .labels)
+
+  purrr::pmap(list(reshaped$.data, reshaped$missing), plot_hist,
+              .labels = .labels, missingness)
 }
 
 #' Plot histogram for factors
@@ -23,18 +24,25 @@ plot_numerics <- function(.data, .labels = NULL) {
 #'
 #' @keywords internal
 #' @noRd
-plot_hist <- function(.data, .labels) {
+plot_hist <- function(.data, .missing, .labels, missingness) {
   title <- NULL
   if (!is.null(.labels)) {
     # find title for graph
     var <- .data[[1]][1]
     title <- find_label(.labels, var)
+    title <- stringr::str_wrap(title, width = 70)
   }
   
+  if (missingness) {
+    missingness <- paste0("Missing proportion: ", .missing$wert)
+  } else {
+    missingness <- NULL
+  }
+
   ggplot(.data, aes(wert)) +
     geom_histogram() +
     labs(x = NULL,
-         y = NULL,
-         title = title) +
+         title = title,
+         caption = missingness) +
     theme_bw()
 }
