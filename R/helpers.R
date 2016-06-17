@@ -13,6 +13,21 @@ find_label <- function(.data, .var) {
     unname()
 }
 
+#' Extract variable labels
+#'
+#' @param .data A \code{data.frame}
+#'
+#' @return A \code{data.frame} with the attributes \code{names} and
+#'    \code{variable.labels} as columns.
+#' @export
+label_df <- function(.data) {
+  .data %>%
+    attributes() %>%
+    .[c("names", "variable.labels")] %>%
+    dplyr::bind_cols()
+}
+
+
 
 
 #' Reshape to long form ans split by var

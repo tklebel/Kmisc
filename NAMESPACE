@@ -2,6 +2,7 @@
 
 export(Index)
 export(find_label)
+export(label_df)
 export(plot_factors)
 export(plot_numerics)
 importFrom(magrittr,"%>%")
