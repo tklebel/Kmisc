@@ -1,4 +1,4 @@
-Kmisc
+tkmisc
 =====
 
 Package for R

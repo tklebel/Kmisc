@@ -1,10 +1,11 @@
-Package: Kmisc
+Package: tkmisc
 Type: Package
 Title: Miscellaneous functions I find helpful for my data analysis
-Version: 0.1
-Date: 2014-11-10
-Author: Thomas Klebel
-Maintainer: Thomas Klebel <t.klebel@hotmail.com>
+Version: 0.1.0
+Authors@R: person("Thomas", "Klebel", email = "t.klebel@icloud.com",
+    role = c("cre", "aut"))
 Description: Until now there is one function to compute a scale for further
     analysis. More functions will be added in the future.
-License: Currently no license
+Depends: R (>= 3.1.0)
+License: MIT + file LICENSE
+RoxygenNote: 5.0.1

@@ -1,12 +1,15 @@
 #' Index
 #'
-#' This function computes a mean-index or a sum-index for use in social sciences
+#' This function computes a mean-index or a sum-index for use in social sciences.
+#' 
 #' @param items The items you want to compute the index from. Has to be a data.frame.
 #' @param type mean will give you a mean-index, sum a sum-index
-#' @param maximum the maximum of allowed missings in a row
-#' @param minimum the minimum of non-missings in a row for which to compute the scale
+#' @param max the maximum of allowed missings in a row
+#' @param min the minimum of non-missings in a row for which to compute the scale
+#' 
 #' @keywords mean-index
 #' @export
+#' 
 #' @examples
 #' # generate data
 #' set.seed(1234)
@@ -22,18 +25,15 @@
 #' Index(df1, type="mean", min=3)
 #' Index(df1, type="mean", min=2)
 #' Index(df1, type="sum")
- 
-
-
 Index <- function(items, type, max, min) {
-  if(!is.data.frame(items))
+  if (!is.data.frame(items))
     stop("Data must be a data frame")
-  if(missing(max) && missing(min)) {
+  if (missing(max) && missing(min)) {
     m <- 0
     message("Missing value 'max' or 'min': maximum value of allowed NAs was set to 0")
   }
-  else if(missing(max)){
-    m <- dim(items)[2]-min
+  else if (missing(max)) {
+    m <- dim(items)[2] - min
   } 
   else {m <- max}
   
@@ -42,12 +42,12 @@ Index <- function(items, type, max, min) {
     df <- sapply(df, function(x) as.numeric(x) )
     df <- data.frame(df)
   }
-  df[rowSums(is.na(df)) > m,]<-NA # set all lines to NA where the number of NAs is above the maximum of allowed NAs
+  df[rowSums(is.na(df)) > m,] <- NA # set all lines to NA where the number of NAs is above the maximum of allowed NAs
   
   
   switch(type,
          mean = {
-           skala <- rowMeans(df, na.rm=T) # compute the meanIndex
+           skala <- rowMeans(df, na.rm = T) # compute the meanIndex
          },
          sum = {
            skala <- rowSums(df) # compute the sumIndex
