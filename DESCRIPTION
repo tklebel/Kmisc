@@ -7,5 +7,11 @@ Authors@R: person("Thomas", "Klebel", email = "t.klebel@icloud.com",
 Description: Until now there is one function to compute a scale for further
     analysis. More functions will be added in the future.
 Depends: R (>= 3.1.0)
+Imports: 
+    ggplot2 (>= 2.1.0),
+    dplyr (>= 0.4.3),
+    tidyr (>= 0.4.1),
+    purrr (>= 0.2.1),
+    magrittr
 License: MIT + file LICENSE
 RoxygenNote: 5.0.1
