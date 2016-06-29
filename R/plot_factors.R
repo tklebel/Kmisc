@@ -23,7 +23,7 @@ plot_factors <- function(.data, .labels = NULL, missingness = T) {
 #'
 #' @keywords internal
 #' @noRd
-plot_bar <- function(.data, .labels) {
+plot_bar <- function(.data, .missing, .labels, missingness) {
   title <- NULL
   if (!is.null(.labels)) {
     # find title for graph
@@ -31,7 +31,7 @@ plot_bar <- function(.data, .labels) {
     title <- find_label(.labels, var)
     title <- stringr::str_wrap(title, width = 70)
   }
-
+  
   if (missingness) {
     missingness <- paste0("Missing proportion: ", .missing$wert)
   } else {
@@ -42,7 +42,7 @@ plot_bar <- function(.data, .labels) {
     geom_bar() +
     scale_x_discrete(drop = F) +
     labs(x = NULL,
-         y = NULL,
-         title = missingness) +
+         title = title,
+         caption = missingness) +
     theme_bw()
 }
