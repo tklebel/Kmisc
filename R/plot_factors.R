@@ -13,7 +13,7 @@ plot_factors <- function(.data, .labels = NULL, missingness = T) {
     dplyr::select_if(is.factor) %>%
     reshape_data()
 
-  purrr::pmap(list(reshaped$.data, reshaped$missing), plot_hist,
+  purrr::pmap(list(reshaped$.data, reshaped$missing), plot_bar,
               .labels = .labels, missingness)}
 
 #' Plot bar for factors
