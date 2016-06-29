@@ -4,7 +4,7 @@
 \alias{plot_numerics}
 \title{Autmated histograms}
 \usage{
-plot_numerics(.data, .labels = NULL)
+plot_numerics(.data, .labels = NULL, missingness = T)
 }
 \arguments{
 \item{.data}{A \code{data.frame}.}

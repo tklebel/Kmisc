@@ -4,7 +4,7 @@
 \alias{plot_factors}
 \title{Autmated bar plots}
 \usage{
-plot_factors(.data, .labels = NULL)
+plot_factors(.data, .labels = NULL, missingness = T)
 }
 \arguments{
 \item{.data}{A \code{data.frame}.}

@@ -17,7 +17,7 @@ plot_numerics <- function(.data, .labels = NULL, missingness = T) {
               .labels = .labels, missingness)
 }
 
-#' Plot histogram for factors
+#' Plot histogram for numeric data
 #'
 #' @param .data A \code{data.frame} with the variable of interest named
 #'    \code{wert}.
